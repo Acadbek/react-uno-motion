@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import type { ButtonHTMLAttributes } from "react";
 
 const buttonVariants = cva(
-  "inline-flex flex gap-2 items-center justify-center rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex flex gap-2 items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
@@ -47,7 +47,6 @@ export function Button({
 }: ButtonProps) {
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
