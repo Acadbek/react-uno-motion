@@ -10,27 +10,24 @@ import type {
 const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastData[]>([]);
 
-  const addToast = useCallback(
-    (toast: ToastOptions & { description: string }) => {
-      const id = Math.random().toString(36).slice(2, 9);
-      const newToast: ToastData = {
-        id,
-        title: toast.title,
-        description: toast.description,
-        type: toast.type || "default",
-        duration: toast.duration || 4000,
-        timestamp: Date.now(),
-      };
+  const addToast = useCallback((toast: ToastOptions) => {
+    const id = Math.random().toString(36).slice(2, 9);
+    const newToast: ToastData = {
+      id,
+      title: toast.title,
+      description: toast.description,
+      type: toast.type || "default",
+      duration: toast.duration || 4000,
+      timestamp: Date.now(),
+    };
 
-      setToasts((prev) => [...prev, newToast]);
+    setToasts((prev) => [...prev, newToast]);
 
-      // Auto remove after duration
-      setTimeout(() => {
-        removeToast(id);
-      }, newToast.duration);
-    },
-    [],
-  );
+    // Auto remove after duration
+    setTimeout(() => {
+      removeToast(id);
+    }, newToast.duration);
+  }, []);
 
   const removeToast = useCallback((id: string) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
