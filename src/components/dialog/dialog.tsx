@@ -52,19 +52,14 @@ export const Dialog: React.FC<DialogProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      // Modal ochilganda 'body' ga 'overflow: hidden' stilini qo'shamiz
       document.body.style.overflow = "hidden";
     }
 
-    // Bu tozalash (cleanup) funksiyasi
-    // Komponent yo'q qilinganda yoki 'isOpen' false bo'lganda ishlaydi
     return () => {
-      // Modal yopilganda 'body' dan stilni olib tashlaymiz
       document.body.style.overflow = "auto";
     };
-  }, [isOpen]); // Bu effekt faqat 'isOpen' o'zgarganda ishga tushadi
-  // isOpen false bo'lsa, hech narsa render qilmaymiz
-  // AnimatePresence to'g'ri ishlashi uchun shunday qilinadi
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
@@ -100,7 +95,6 @@ export const Dialog: React.FC<DialogProps> = ({
           </button>
         </div>
 
-        {/* Asosiy kontent */}
         <div className="text-gray-700 dark:text-gray-300">{children}</div>
       </motion.div>
     </motion.div>
