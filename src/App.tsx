@@ -2,6 +2,7 @@ import "./App.css";
 import { Button } from "./components/Button";
 import { motion } from "motion/react";
 import { useToast } from "./components/toast/usetoast";
+import DialogDemo from "./components/dialog-demo";
 
 function App() {
   const toast = useToast();
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <>
+      <DialogDemo />
       <motion.div
         key="box"
         initial={{ opacity: 0, y: -20 }} // Boshlanganda

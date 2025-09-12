@@ -6,7 +6,7 @@ export const useToast = (): UseToastReturn => {
   const { addToast } = useToastContext();
 
   const toast = useCallback(
-    (message: string, options: Omit<ToastOptions, "description"> = {}) => {
+    (message: string, options: ToastOptions = {}) => {
       addToast({
         description: message,
         ...options,
