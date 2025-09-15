@@ -3,9 +3,44 @@ import { Button } from "./components/Button";
 import { motion } from "motion/react";
 import { useToast } from "./components/toast/usetoast";
 import DialogDemo from "./components/dialog-demo";
+import { Tabs } from "./components/tabs";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import { FiCode, FiSettings, FiUser } from "react-icons/fi";
+const codeString = `
+  function Button({ label, onClick }) {
+    return (
+      <button onClick={onClick}>
+        {label}
+      </button>
+    );
+  }
+`;
 
 function App() {
   const toast = useToast();
+
+  const tabData = [
+    {
+      label: "Preview",
+      content: (
+        <div className="flex items-center gap-4 h-[400px]">
+          <Button>Click</Button>
+        </div>
+      ),
+    },
+    {
+      label: "Code",
+      content: (
+        <div className="flex items-center gap-4 h-[400px]">
+          <SyntaxHighlighter language="javascript" style={dracula}>
+            {codeString}
+          </SyntaxHighlighter>
+        </div>
+      ),
+    },
+  ];
 
   const showToasts = () => {
     toast.success("Muvaffaqiyatli bajarildi!", {
@@ -43,6 +78,7 @@ function App() {
 
   return (
     <>
+      <Tabs items={tabData} />
       <DialogDemo />
       <motion.div
         key="box"
