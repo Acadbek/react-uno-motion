@@ -100,3 +100,5 @@ export const Dialog: React.FC<DialogProps> = ({
     </motion.div>
   );
 };
+
+export default Dialog;

@@ -63,3 +63,5 @@ export const Tabs: React.FC<TabsProps> = ({ items, defaultIndex = 0 }) => {
     </div>
   );
 };
+
+export default Tabs;

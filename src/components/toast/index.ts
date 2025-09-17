@@ -1,6 +1,7 @@
 export { default as Toast } from "./toast";
 export { default as ToastProvider } from "./provider";
 export { default as ToastContainer } from "./toast-container";
+export { default } from "./toast";
 // import { useToastContext } from "./toast-context";
 // import { useToast } from "./usetoast";
 
